@@ -1,0 +1,42 @@
+package com.packages;
+import java.util.Scanner;
+public class Main {
+    static void jum_searchEle(int[] arr, int target) {
+        int j = (int) Math.sqrt(arr.length);
+        int curr_index = j - 1;
+        int flag = 0;
+        while (curr_index < arr.length && target > arr[curr_index]) {
+            curr_index += j;
+        }
+        for (int i = curr_index - j + 1; i <= curr_index && i < arr.length; i++) {
+            if (arr[i] == target) {
+                flag = 1;
+                System.out.println("Element found at index : " + i);
+            }
+        }
+        if (flag == 0) {
+            System.out.println("Element not found :( ");
+        }
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter no of test cases : ");
+        int tc = sc.nextInt();
+        int i = 0;
+        while (i < tc) {
+            System.out.print("Enter the size of array : ");
+            int size = sc.nextInt();
+            int[] arr = new int[size];
+            int n = arr.length;
+            System.out.print("Enter the array Element : ");
+            for (int j = 0; j < n; j++) {
+                arr[j] = sc.nextInt();
+            }
+            System.out.print("Enter the key to find : ");
+            int key = sc.nextInt();
+            jum_searchEle(arr, key);
+            i++;
+        }
+    }
+}
