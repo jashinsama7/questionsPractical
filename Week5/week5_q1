@@ -1,0 +1,39 @@
+package com.packages;
+import java.util.Scanner;
+public class Main {
+    public static void Count_Sort(char arr[], int n) {
+        int[] count = new int[26];
+        for (int i = 0; i < n; i++) {
+            if (arr[i] >= 97 && arr[i] <= 122) {
+                count[(int) arr[i] - 97]++;
+            }
+        }
+        int ind = 0, max = 0;
+        for (int i = 0; i < 26; i++) {
+            if (count[i] > max) {
+                ind = i;
+                max = count[i];
+            }
+        }
+        System.out.println((char) (ind + 97) + " = " + max);
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter no of test cases : ");
+        int tc = sc.nextInt();
+        int i = 0;
+        while (i < tc) {
+            System.out.print("Enter the size of array : ");
+            int size1 = sc.nextInt();
+            char[] arr1 = new char[size1];
+            int n1 = arr1.length;
+            System.out.print("Enter the array1 Element : ");
+            for (int j = 0; j < n1; j++) {
+                arr1[j] = sc.next().charAt(0);
+            }
+            Count_Sort(arr1, arr1.length);
+            i++;
+        }
+    }
+}
+
