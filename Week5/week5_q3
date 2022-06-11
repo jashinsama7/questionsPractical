@@ -1,0 +1,41 @@
+package com.packages;
+import java.util.Scanner;
+public class Main {
+    public static void FindCommon(int[] arr1, int[] arr2) {
+        int n1 = arr1.length;
+        int n2 = arr2.length;
+        for (int i = 0; i < n1; i++) {
+            for (int j = 0; j < n2; j++) {
+                if (arr1[i] == arr2[j]) {
+                    System.out.print(arr1[i] + " ");
+                }
+            }
+        }
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter no of test cases : ");
+        int tc = sc.nextInt();
+        int i = 0;
+        while (i < tc) {
+            System.out.print("Enter the size of array1 : ");
+            int size1 = sc.nextInt();
+            int[] arr1 = new int[size1];
+            int n1 = arr1.length;
+            System.out.print("Enter the array1 Element : ");
+            for (int j = 0; j < n1; j++) {
+                arr1[j] = sc.nextInt();
+            }
+            System.out.print("Enter the size of array2 : ");
+            int size2 = sc.nextInt();
+            int[] arr2 = new int[size2];
+            int n2 = arr2.length;
+            System.out.print("Enter the array2 Element : ");
+            for (int j = 0; j < n2; j++) {
+                arr2[j] = sc.nextInt();
+            }
+            FindCommon(arr1, arr2);
+            i++;
+        }
+    }
+}
