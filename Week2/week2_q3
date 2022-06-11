@@ -1,0 +1,38 @@
+package com.packages;
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Main {
+    public static void check_seq(int[] arr, int key) {
+        int k = arr.length - 1;
+        int n = arr.length;
+        int count = 0;
+        Arrays.sort(arr);
+        for (int i = k; i >= 0; i--) {
+            for (int j = 0; j < n - i; j++) {
+                if (arr[i] - arr[j] == key)
+                    count++;
+            }
+        }
+        System.out.println("No of such pairs are : " + count);
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter no of test cases : ");
+        int tc = sc.nextInt();
+        int i = 0;
+        while (i < tc) {
+            System.out.print("Enter the size of array : ");
+            int size = sc.nextInt();
+            int[] arr = new int[size];
+            int n = arr.length;
+            System.out.print("Enter the array Element : ");
+            for (int j = 0; j < n; j++) {
+                arr[j] = sc.nextInt();
+            }
+            check_seq(arr, 3);
+            i++;
+        }
+    }
+}
