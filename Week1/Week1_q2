@@ -1,0 +1,43 @@
+package com.packages;
+import java.util.Scanner;
+public class Main {
+    public static void binarySearch(int[] arr, int si, int ei, int key) {
+        int flag = -1;
+        while (si < ei) {
+            int mid = si + (ei - si) / 2;
+            if (arr[mid] == key) {
+                flag = 1;
+                System.out.println(key + " is present in array.");
+                break;
+            } else if (key > arr[mid]) {
+                si = mid + 1;
+                binarySearch(arr, si, ei, key);
+            } else if (key < mid) {
+                ei = mid - 1;
+                binarySearch(arr, si, ei, mid);
+            }
+        }
+        if (flag == -1) {
+            System.out.println(key + " is not present in array.");
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter no of test cases : ");
+        int tc = sc.nextInt();
+        int i = 0;
+        while (i < tc) {
+            System.out.print("Enter the size of array : ");
+            int size = sc.nextInt();
+            int[] arr = new int[size];
+            int n = arr.length;
+            System.out.print("Enter the array Element : ");
+            for (int j = 0; j < n; j++) {
+                arr[j] = sc.nextInt();}
+            System.out.print("Enter the key to find : ");
+            int key = sc.nextInt();
+            binarySearch(arr, 0, arr.length, key);
+            i++;  }
+    }
+}
