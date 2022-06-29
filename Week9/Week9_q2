@@ -36,4 +36,4 @@ int main() {
         cout << it.second << " - " << it.first << endl;
     return 0;
 }
-© 2022 GitHub, Inc
+
