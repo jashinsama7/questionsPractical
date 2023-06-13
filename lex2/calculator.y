@@ -1,30 +1,50 @@
 %{
 #include <stdio.h>
-# include "y.tab.h"
-extern int yylval;
+#include <stdlib.h>
+int yylex(void);
+int yyerror(char*s);
 %}
 
+%token NUMBER ALPHA 
+%left '+' '-'
+%left '*' '/'
+%left '(' ')'
+ 
 %%
 
-[0-9]+ {
-
-yylval = atoi(yytext);
-return NUMBER;
-
+grammer: expr '\n' {
+printf("\n Arithematic Expression is Valid.");
+printf("\n Expression Result : %d\n",$$);
+exit(0);
 }
 
-[a-zA-Z]+ {return ALPHA;}
-
-[\t]+ ;
-
-[\n] {return '\n';}
-
-. {return yytext[0];}
-
+expr : expr'+'expr {$$ = $1 + $3;} 
+     | expr'*'expr {$$ = $1 * $3;}
+     | expr'/'expr {$$ = $1 / $3;}
+     | expr'-'expr {$$ = $1 - $3;}
+     | '('expr')'  {$$ = $2;}
+     | NUMBER      {$$ = $1;}
+     | ALPHA 
+     ;
+     
 %%
 
-int yywrap(void){
-    return 0;
+int main(void){
+
+printf("Enter the Arithematic Expression : ");
+yyparse();
+return 0;
 }
+
+
+int yyerror(char*s){
+
+printf("Arthematic Expression is Invalid ");
+exit(1);
+return 1;
+}
+
+
+
 
 
